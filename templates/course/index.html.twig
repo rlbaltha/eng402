@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course index{% endblock %}
+
+{% block body %}
+    <div class="row-fluid">
+        <h1>Courses</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Term</th>
+                <th>Coursename</th>
+                <th>Title</th>
+                <th>Instructorname</th>
+                <th>Callnumber</th>
+                <th>Time</th>
+                <th>Building</th>
+                <th>Room</th>
+                <th>Days</th>
+                <th>Area</th>
+                <th>May</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for course in courses %}
+                <tr>
+                    <td>{{ course.term }} </td>
+                    <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                    <td>{{ course.title }}</td>
+                    <td>{{ course.instructorname }}</td>
+                    <td>{{ course.callnumber }}</td>
+                    <td>{{ course.time }}</td>
+                    <td>{{ course.building }}</td>
+                    <td>{{ course.room }}</td>
+                    <td>{{ course.days }}</td>
+                    <td>{{ course.area }}</td>
+                    <td>{{ course.may }} {{ course.summerterm }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="14">No Courses Found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% endblock %}

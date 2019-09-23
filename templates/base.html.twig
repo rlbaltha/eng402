@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}UGA English Courses{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {# local #}
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/local.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<div class="header-row">
+    <a class="" href="http://www.english.uga.edu"
+       title="English Department Homepage">
+        <img class="header-img img-responsive" alt="UGA English Department logo"
+             src="https://www.english.uga.edu/sites/default/files/Screen-ENG-A%26S-H-FC_0.png"/></a>
+
+</div>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.english.uga.edu/first-year-composition">PROGRAMS</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    COURSES
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'A', 'term': '201908'}) }}">COMPOSITION</a>
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'B', 'term': '201908'}) }}">SOPHMORE
+                        SURVEYS</a>
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': '201908'}) }}">UPPER</a>
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': '201908'}) }}">UPPER BY
+                        AREA</a>
+                    <a class="dropdown-item"
+                       href="{{ path('course_area', {'area': 'G', 'term': '201908'}) }}">GRADUATE</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.english.uga.edu/directory/graduate-faculty">PEOPLE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.english.uga.edu/news/all">NEWS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="http://www.english.uga.edu/events/all">EVENTS</a>
+            </li>
+
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <span class="navbar-text">
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+            </span>>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                </li>
+            {% endif %}
+
+
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+
+    {% block body %}{% endblock %}
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"
+        integrity="sha256-uC1JMW5e1U5D28+mXFxzTz4SSMCywqhxQIodqLECnfU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.widgets.min.js"
+        integrity="sha256-Xx4HRK+CKijuO3GX6Wx7XOV2IVmv904m0HKsjgzvZiY=" crossorigin="anonymous"></script>
+
+<script language="javascript">
+    $(document).ready(function () {
+        $("table").tablesorter();
+    });
+</script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

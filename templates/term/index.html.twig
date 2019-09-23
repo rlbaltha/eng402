@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Term index{% endblock %}
+
+{% block body %}
+    <h1>Term index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Term</th>
+                <th>Termname</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for term in terms %}
+            <tr>
+                <td>{{ term.id }}</td>
+                <td>{{ term.term }}</td>
+                <td>{{ term.termname }}</td>
+                <td>{{ term.status }}</td>
+                <td>
+                    <a href="{{ path('term_show', {'id': term.id}) }}">show</a>
+                    <a href="{{ path('term_edit', {'id': term.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('term_new') }}">Create new</a>
+{% endblock %}

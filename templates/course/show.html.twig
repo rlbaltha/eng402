@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course{% endblock %}
+
+{% block body %}
+    <div class="row-fluid">
+        <h1>{{ course.coursename }}</h1>
+        <div class="row-fluid">
+            <a class="btn btn-primary" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
+
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Term</th>
+                <th>Coursename</th>
+                <th>Title</th>
+                <th>Instructorname</th>
+                <th>Callnumber</th>
+                <th>Time</th>
+                <th>Building</th>
+                <th>Room</th>
+                <th>Days</th>
+                <th>Area</th>
+                <th>May</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ course.term }} </td>
+                <td>{{ course.coursename }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.instructorname }}</td>
+                <td>{{ course.callnumber }}</td>
+                <td>{{ course.time }}</td>
+                <td>{{ course.building }}</td>
+                <td>{{ course.room }}</td>
+                <td>{{ course.days }}</td>
+                <td>{{ course.area }}</td>
+                <td>{{ course.may }} {{ course.summerterm }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row-fluid">
+
+        {% for description in descriptions %}
+            {{ description.body|raw }}
+            <hr/>
+        {% else %}
+            No Description for this Course. <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
