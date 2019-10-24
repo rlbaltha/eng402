@@ -18,7 +18,9 @@
         "symfony/framework-bundle": "3.4.*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/twig-bundle": "3.4.*",
-        "symfony/yaml": "3.4.*"
+        "symfony/yaml": "3.4.*",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/orm": "^2.5"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",
