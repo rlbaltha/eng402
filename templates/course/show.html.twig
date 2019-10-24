@@ -50,7 +50,8 @@
             {{ description.body|raw }}
             <hr/>
         {% else %}
-            No Description for this Course. <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
+            No Description for this Course.
+{#            <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>#}
         {% endfor %}
     </div>
 
