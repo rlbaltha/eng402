@@ -1,0 +1,10 @@
+be_simple_sso_auth:
+    admin_sso:
+        protocol:
+            id: cas
+            version: 2
+        server:
+            id: cas
+            login_url: https://sso.dev.uga.edu/cas/login
+            logout_url: https://sso.dev.uga.edu/cas/logout
+            validation_url: https://sso.dev.uga.edu/cas/serviceValidate
