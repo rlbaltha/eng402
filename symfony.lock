@@ -1,4 +1,7 @@
 {
+    "besimple/sso-auth-bundle": {
+        "version": "1.0.x-dev"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -92,26 +95,20 @@
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
-    "guzzlehttp/guzzle": {
-        "version": "6.3.3"
-    },
-    "guzzlehttp/promises": {
-        "version": "v1.3.1"
-    },
     "guzzlehttp/psr7": {
         "version": "1.6.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "kriswallsmith/buzz": {
+        "version": "v0.16.1"
+    },
     "monolog/monolog": {
         "version": "1.25.1"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"
-    },
-    "prayno/casauth-bundle": {
-        "version": "1.3.2"
     },
     "psr/cache": {
         "version": "1.0.1"
