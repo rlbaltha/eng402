@@ -19,36 +19,36 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-#        main:
-#            pattern: ^/
-#            form_login:
-#                provider: fos_userbundle
-#                csrf_token_generator: security.csrf.token_manager
-#
-#            logout:       true
-#            anonymous:    true
-
         main:
             pattern: ^/
-            trusted_sso:
-                manager: admin_sso
-                create_users: true
-                created_users_roles: [ 'ROLE_USER' ]
-                login_action: false
-                logout_action: false
-                login_path: /login
-                check_path: /login
-                failure_path: /
-            provider: fos_userbundle
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:       true
             anonymous:    true
-            switch_user: true
-            logout:
-                path:   /logout
-                target: /
+
+#        main:
+#            pattern: ^/
+#            trusted_sso:
+#                manager: admin_sso
+#                create_users: true
+#                created_users_roles: [ 'ROLE_USER' ]
+#                login_action: false
+#                logout_action: false
+#                login_path: /login
+#                check_path: /login
+#                failure_path: /
+#            provider: fos_userbundle
+#            anonymous:    true
+#            switch_user: true
+#            logout:
+#                path:   /logout
+#                target: /
 
     access_control:
-        - { path: edit$, role: ROLE_ADMIN }
-        - { path: new$, role: ROLE_ADMIN }
-        - { path: delete$, role: ROLE_ADMIN }
-        - { path: create$, role: ROLE_ADMIN }
-        - { path: update$, role: ROLE_ADMIN }
+        - { path: edit$, role: ROLE_USER }
+        - { path: new$, role: ROLE_USER }
+        - { path: delete$, role: ROLE_USER }
+        - { path: create$, role: ROLE_USER }
+        - { path: update$, role: ROLE_USER }
