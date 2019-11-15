@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Description;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\DependencyInjection\Tests\Compiler\H;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +16,6 @@ class DescriptionType extends AbstractType
     {
         $builder
             ->add('body', CKEditorType::class)
-            ->add('course')
-            ->add('callnumber')
-            ->add('term')
-            ->add('user')
         ;
     }
 

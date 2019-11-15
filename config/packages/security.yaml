@@ -17,16 +17,15 @@ security:
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-#        main:
-#            pattern: ^/
-#            form_login:
-#                provider: fos_userbundle
-#                csrf_token_generator: security.csrf.token_manager
-#
-#            logout:       true
-#            anonymous:    true
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+            provider: fos_userbundle
+            logout:       true
+            anonymous:    true
 
         main:
             pattern: ^/

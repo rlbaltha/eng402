@@ -65,16 +65,25 @@ class CourseRepository extends ServiceEntityRepository
 
     }
 
-
-    /*
-    public function findOneBySomeField($value): ?Course
+    public function findOneByTermCall($term, $callnumber)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.term = :term')
+            ->setParameter('term', $term)
+            ->andWhere('c.callnumber = :callnumber')
+            ->setParameter('callnumber', $callnumber)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+
+    public function findByName($name)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.instructorname = :val')
+            ->setParameter('val', $name)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

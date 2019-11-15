@@ -37,6 +37,18 @@ class CourseController extends Controller
     }
 
     /**
+     * @Route("/user", name="course_user", methods={"GET"})
+     */
+    public function byuser(CourseRepository $courseRepository): Response
+    {
+        $user = $this->getUser();
+        $name = $user->getLastname().', '.$user->getFirstname();
+        return $this->render('course/index.html.twig', [
+            'courses' => $courseRepository->findByName($name),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="course_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -65,7 +77,7 @@ class CourseController extends Controller
     public function show(Course $course): Response
     {
         $descriptions = $this->getDoctrine()
-            ->getRepository(Description::class)->findByCallterm($course->getCallnumber(), $course->getTerm());
+            ->getRepository(Description::class)->findByTermcall($course->getTermcall());
         return $this->render('course/show.html.twig', [
             'descriptions' => $descriptions,
             'course' => $course,

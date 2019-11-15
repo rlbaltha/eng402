@@ -25,7 +25,7 @@
             <tbody>
             {% for course in courses %}
                 <tr>
-                    <td>{{ course.term }} </td>
+                    <td>{{ course.term }}</td>
                     <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
                     <td>{{ course.title }}</td>
                     <td>{{ course.instructorname }}</td>

@@ -48,10 +48,11 @@
 
         {% for description in descriptions %}
             {{ description.body|raw }}
+            <a class="btn btn-primary" href="{{ path('description_edit', {'id': description.id, 'courseid': course.id}) }}">Update Description</a>
             <hr/>
         {% else %}
             No Description for this Course.
-{#            <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>#}
+            <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
         {% endfor %}
     </div>
 

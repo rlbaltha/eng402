@@ -225,4 +225,8 @@ class Course
         return $this;
     }
 
+    public function getTermcall(): ?string
+    {
+        return $this->callnumber.$this->term;
+    }
 }

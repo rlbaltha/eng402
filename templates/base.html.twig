@@ -45,6 +45,10 @@
                         AREA</a>
                     <a class="dropdown-item"
                        href="{{ path('course_area', {'area': 'G', 'term': '201908'}) }}">GRADUATE</a>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a class="dropdown-item"
+                       href="{{ path('course_user') }}">MY COURSES</a>
+                    {% endif %}
                 </div>
             </li>
             <li class="nav-item">
@@ -58,7 +62,7 @@
             </li>
 
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <span class="navbar-text">
+                <span class="navbar-text">
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
             </span>>
                 <li class="nav-item">
@@ -66,6 +70,7 @@
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                     </a>
                 </li>
+
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link"

@@ -23,13 +23,11 @@ class DescriptionRepository extends ServiceEntityRepository
     * @return Description[] Returns an array of Description objects
     */
 
-    public function findByCallterm($callnumber, $term)
+    public function findByTermcall($termcall)
     {
         return $this->createQueryBuilder('d')
-            ->andWhere('d.callnumber = :callnumber')
-            ->setParameter('callnumber', $callnumber)
-            ->andWhere('d.term = :term')
-            ->setParameter('term', $term)
+            ->andWhere('d.termcall = :termcall')
+            ->setParameter('termcall', $termcall)
             ->orderBy('d.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()

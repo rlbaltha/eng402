@@ -31,16 +31,11 @@ class Description
      */
     private $course;
 
-
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $callnumber;
+    private $termcall;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $term;
 
     public function getId(): ?int
     {
@@ -83,29 +78,18 @@ class Description
         return $this;
     }
 
-
-    public function getCallnumber(): ?string
+    public function getTermcall(): ?string
     {
-        return $this->callnumber;
+        return $this->termcall;
     }
 
-    public function setCallnumber(?string $callnumber): self
+    public function setTermcall(?string $termcall): self
     {
-        $this->callnumber = $callnumber;
+        $this->termcall = $termcall;
 
         return $this;
     }
 
-    public function getTerm(): ?string
-    {
-        return $this->term;
-    }
 
-    public function setTerm(?string $term): self
-    {
-        $this->term = $term;
-
-        return $this;
-    }
 
 }

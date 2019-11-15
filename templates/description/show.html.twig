@@ -5,30 +5,15 @@
 {% block body %}
     <h1>Description</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ description.id }}</td>
-            </tr>
-            <tr>
-                <th>Body</th>
-                <td>{{ description.body }}</td>
-            </tr>
-            <tr>
-                <th>Course</th>
-                <td>{{ description.course }}</td>
-            </tr>
-            <tr>
-                <th>Callterm</th>
-                <td>{{ description.callterm }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h2>{{ description.course }}</h2>
+    {{ description.body }}
 
     <a href="{{ path('description_index') }}">back to list</a>
 
-    <a href="{{ path('description_edit', {'id': description.id}) }}">edit</a>
+    {% if course %}
+    <a href="{{ path('description_edit', {'id': description.id, courseid: course.id}) }}">edit</a>
+        {{ include('description/_delete_form.html.twig') }}
+    {%  endif %}
 
-    {{ include('description/_delete_form.html.twig') }}
+
 {% endblock %}
