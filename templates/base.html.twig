@@ -46,8 +46,10 @@
                     <a class="dropdown-item"
                        href="{{ path('course_area', {'area': 'G', 'term': '201908'}) }}">GRADUATE</a>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <a class="dropdown-item"
-                       href="{{ path('course_user') }}">MY COURSES</a>
+                        <a class="dropdown-item"
+                           href="{{ path('course_user') }}">MY COURSES</a>
+                        <a class="dropdown-item"
+                           href="{{ path('description_user') }}">MY Descriptions</a>
                     {% endif %}
                 </div>
             </li>

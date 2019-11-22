@@ -28,6 +28,18 @@ class DescriptionController extends Controller
     }
 
     /**
+     * @Route("/byuser", name="description_user", methods={"GET"})
+     */
+    public function byuser(DescriptionRepository $descriptionRepository): Response
+    {
+        $user = $this->getUser();
+        return $this->render('description/index.html.twig', [
+            'descriptions' => $descriptionRepository->findByUser($user),
+        ]);
+
+    }
+
+    /**
      * @Route("{course}/new", name="description_new", methods={"GET","POST"})
      */
     public function new(Request $request, $course): Response
