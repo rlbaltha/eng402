@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Course index{% endblock %}
+{% block title %}User{% endblock %}
 
 {% block body %}
+    <h1>{{ user.firstname }} {{ user.lastname }}</h1> <a class="btn btn-primary" href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
+
     <div class="row-fluid">
         <h1>Courses</h1>
 
@@ -46,14 +48,24 @@
         </table>
     </div>
 
+    <h2>Descriptions</h2>
 
-{% endblock %}
-
-{% block javascripts %}
-{{ parent() }}
-<script language="javascript">
-    $(document).ready(function () {
-        $("table").tablesorter();
-    });
-</script>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Course</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for description in user.descriptions %}
+            <tr>
+                <td><a href="{{ path('description_show', {'id': description.id}) }}">For {{ description.course }}</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\Term;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use App\Entity\Description;
@@ -31,6 +32,11 @@ class CourseController extends Controller
      */
     public function area(CourseRepository $courseRepository, $area, $term): Response
     {
+        if ($term =='current') {
+            $term = $this->getDoctrine()
+                ->getRepository(Term::class)->findDefault();
+            $term = $term->getTerm();
+        }
         return $this->render('course/index.html.twig', [
             'courses' => $courseRepository->findByArea($area, $term),
         ]);

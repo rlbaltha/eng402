@@ -5,6 +5,7 @@
     <title>{% block title %}UGA English Courses{% endblock %}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/css/theme.bootstrap.min.css" integrity="sha256-vgjicWNWkVklkfuqKnQth9ww987V7wCOzh6A0qkJ2Lw=" crossorigin="anonymous" />
     {# local #}
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
@@ -37,19 +38,23 @@
                     COURSES
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'A', 'term': '201908'}) }}">COMPOSITION</a>
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'B', 'term': '201908'}) }}">SOPHMORE
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'A', 'term': 'current'}) }}">COMPOSITION</a>
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'B', 'term': 'current'}) }}">SOPHMORE
                         SURVEYS</a>
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': '201908'}) }}">UPPER</a>
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': '201908'}) }}">UPPER BY
-                        AREA</a>
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': 'current'}) }}">UPPER</a>
                     <a class="dropdown-item"
-                       href="{{ path('course_area', {'area': 'G', 'term': '201908'}) }}">GRADUATE</a>
+                       href="{{ path('course_area', {'area': 'G', 'term': 'current'}) }}">GRADUATE</a>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a class="dropdown-item"
-                           href="{{ path('course_user') }}">MY COURSES</a>
+                           href="{{ path('user_home') }}">MY COURSES</a>
                         <a class="dropdown-item"
-                           href="{{ path('description_user') }}">MY Descriptions</a>
+                           href="{{ path('term_index') }}">TERMS</a>
+                        <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle')| upper }}
+                        </a>
+                    {% else %}
+                        <a class="dropdown-item"
+                           href="{{ path('user_home') }}">LOG IN</a>
                     {% endif %}
                 </div>
             </li>
@@ -62,24 +67,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="http://www.english.uga.edu/events/all">EVENTS</a>
             </li>
-
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <span class="navbar-text">
-                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
-            </span>>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
-                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </a>
-                </li>
-
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                </li>
-            {% endif %}
-
 
         </ul>
 

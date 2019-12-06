@@ -36,15 +36,15 @@ class TermRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Term
+
+    public function findDefault(): ?Term
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('t.status = :val')
+            ->setParameter('val', 'default')
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

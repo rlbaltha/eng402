@@ -46,8 +46,10 @@ security:
                 target: /
 
     access_control:
-        - { path: edit$, role: ROLE_USER }
-        - { path: new$, role: ROLE_USER }
-        - { path: delete$, role: ROLE_USER }
-        - { path: create$, role: ROLE_USER }
-        - { path: update$, role: ROLE_USER }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/, role: ROLE_EDITOR }
+        - { path: edit$, role: ROLE_EDITOR }
+        - { path: new$, role: ROLE_EDITOR }
+        - { path: delete$, role: ROLE_EDITOR }
+        - { path: create$, role: ROLE_EDITOR }
+        - { path: update$, role: ROLE_EDITOR }
