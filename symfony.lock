@@ -369,6 +369,9 @@
             "config/packages/security.yaml"
         ]
     },
+    "symfony/service-contracts": {
+        "version": "v2.0.1"
+    },
     "symfony/stopwatch": {
         "version": "v3.4.31"
     },

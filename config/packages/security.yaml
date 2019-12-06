@@ -16,16 +16,15 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        dev:
-#            pattern: ^/(_(profiler|wdt)|css|images|js)/
-#            security: false
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
-            provider: fos_userbundle
-            logout:       true
-            anonymous:    true
+#        dev:
+#            pattern: ^/
+#            form_login:
+#                provider: fos_userbundle
+#                csrf_token_generator: security.csrf.token_manager
+#            provider: fos_userbundle
+#            logout:       true
+#            anonymous:    true
+#            logout_on_user_change: true
 
         main:
             pattern: ^/
@@ -44,10 +43,11 @@ security:
             logout:
                 path:   /logout
                 target: /
+            logout_on_user_change: true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/, role: ROLE_EDITOR }
+        - { path: ^/user/, role: ROLE_USER }
         - { path: edit$, role: ROLE_EDITOR }
         - { path: new$, role: ROLE_EDITOR }
         - { path: delete$, role: ROLE_EDITOR }
