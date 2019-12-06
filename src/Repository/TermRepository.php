@@ -41,7 +41,7 @@ class TermRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.status = :val')
-            ->setParameter('val', 'default')
+            ->setParameter('val', '2')
             ->getQuery()
             ->getOneOrNullResult()
         ;
