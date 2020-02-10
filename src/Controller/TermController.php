@@ -21,7 +21,7 @@ class TermController extends Controller
     public function index(TermRepository $termRepository): Response
     {
         return $this->render('term/index.html.twig', [
-            'terms' => $termRepository->findAll(),
+            'terms' => $termRepository->findAllDescending(),
         ]);
     }
 

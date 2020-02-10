@@ -28,17 +28,23 @@ class CourseController extends Controller
     }
 
     /**
-     * @Route("/area/{term}/{area}", name="course_area", methods={"GET"})
+     * @Route("/area/{term}/{area}", name="course_area", methods={"GET"}, defaults={"term":"current","area":"U"})
      */
     public function area(CourseRepository $courseRepository, $area, $term): Response
     {
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
         if ($term =='current') {
             $term = $this->getDoctrine()
                 ->getRepository(Term::class)->findDefault();
             $term = $term->getTerm();
         }
+        $termname = $this->getDoctrine()
+            ->getRepository(Term::class)->findName($term);
         return $this->render('course/index.html.twig', [
             'courses' => $courseRepository->findByArea($area, $term),
+            'terms' => $terms,
+            'termname' => $termname
         ]);
     }
 
@@ -47,10 +53,14 @@ class CourseController extends Controller
      */
     public function byuser(CourseRepository $courseRepository): Response
     {
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
+
         $user = $this->getUser();
         $name = $user->getLastname().', '.$user->getFirstname();
         return $this->render('course/index.html.twig', [
             'courses' => $courseRepository->findByName($name),
+            'terms' => $terms
         ]);
     }
 

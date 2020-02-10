@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Course;
+use App\Entity\Term;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -21,8 +22,12 @@ class UserController extends Controller
      */
     public function index(UserRepository $userRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'terms' => $terms
         ]);
     }
 
@@ -31,6 +36,7 @@ class UserController extends Controller
      */
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -66,9 +72,12 @@ class UserController extends Controller
         $name = $user->getLastname().', '.$user->getFirstname();
         $courses = $this->getDoctrine()
             ->getRepository(Course::class)->findByName($name);
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
         return $this->render('user/home.html.twig', [
             'user' => $user,
             'courses' => $courses,
+            'terms' => $terms
         ]);
     }
 
@@ -77,8 +86,12 @@ class UserController extends Controller
      */
     public function show(User $user): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            'terms' => $terms
         ]);
     }
 
@@ -89,6 +102,7 @@ class UserController extends Controller
      */
     public function edit(Request $request, User $user): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -102,6 +116,34 @@ class UserController extends Controller
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * Promote Users
+     *
+     * @Route("/{username}/{role}/promote", name="user_promote")
+     */
+    public function promoteuserAction($username,$role)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByUsername($username);
+        $user->addRole($role);
+        $userManager->updateUser($user);
+        return $this->render('user/show.html.twig', array('user' => $user));
+    }
+
+    /**
+     * Demote Users
+     *
+     * @Route("/{username}/{role}/demote", name="user_demote")
+     */
+    public function demoteuserAction($username,$role)
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByUsername($username);
+        $user->removeRole($role);
+        $userManager->updateUser($user);
+        return $this->render('user/show.html.twig', array('user' => $user));
     }
 
     /**
