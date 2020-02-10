@@ -3,8 +3,8 @@
 {% block title %}Course index{% endblock %}
 
 {% block body %}
-    <div class="row-fluid">
-        <h1>Courses</h1>
+    <div class="row">
+        <div class="util-scrollable-content">
         <h2>
             Group 1
         </h2>
@@ -23,7 +23,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -87,7 +87,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -139,7 +139,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -191,7 +191,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -240,7 +240,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -289,7 +289,7 @@
                     <th>Term</th>{% endif %}
                 <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
                 <th>Time</th>
                 <th>Building</th>
@@ -328,6 +328,7 @@
             {% endfor %}
             </tbody>
         </table>
+            <div class="util-scrollable-content">
     </div>
 
 
@@ -337,7 +338,6 @@
     {{ parent() }}
     <script language="javascript">
         $(document).ready(function () {
-            $("table").tablesorter();
         });
     </script>
 {% endblock %}
