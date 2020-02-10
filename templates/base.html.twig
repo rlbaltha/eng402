@@ -44,6 +44,13 @@
                     <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': 'current'}) }}">UPPER</a>
                     <a class="dropdown-item"
                        href="{{ path('course_area', {'area': 'G', 'term': 'current'}) }}">GRADUATE</a>
+                    <div class="dropdown-divider"></div>
+                    {% if terms is defined %}
+                    {% for term in terms %}
+                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': term.term }) }}">{{term.termname}}</a>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="dropdown-divider"></div>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a class="dropdown-item"
                            href="{{ path('user_home') }}">MY COURSES</a>
@@ -69,15 +76,10 @@
             </li>
 
         </ul>
-
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
-        </form>
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
 
     {% block body %}{% endblock %}
 

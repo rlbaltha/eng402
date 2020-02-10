@@ -9,8 +9,8 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Term</th>
-                <th>Coursename</th>
+                {% if termname is defined %}<th>Term</th>{% endif %}
+                <th>Course</th>
                 <th>Title</th>
                 <th>Instructorname</th>
                 <th>Callnumber</th>
@@ -18,14 +18,13 @@
                 <th>Building</th>
                 <th>Room</th>
                 <th>Days</th>
-                <th>Area</th>
-                <th>May</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 <tr>
-                    <td>{{ course.term }}</td>
+                    {% if termname is defined %}<td>{{ termname.termname }}</td>{% endif %}
                     <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
                     <td>{{ course.title }}</td>
                     <td>{{ course.instructorname }}</td>
@@ -34,7 +33,6 @@
                     <td>{{ course.building }}</td>
                     <td>{{ course.room }}</td>
                     <td>{{ course.days }}</td>
-                    <td>{{ course.area }}</td>
                     <td>{{ course.may }} {{ course.summerterm }}</td>
                 </tr>
             {% else %}
