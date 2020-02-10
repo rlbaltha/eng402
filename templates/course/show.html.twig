@@ -54,6 +54,7 @@
             No Description for this Course.
             {% if is_granted('ROLE_EDITOR') %}
             <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
+            <a class="btn btn-primary" href="{{ path('user_home') }}">MY COURSES</a>
             {% endif %}
         {% endfor %}
     </div>
