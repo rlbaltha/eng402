@@ -15,7 +15,10 @@ class DescriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('body', CKEditorType::class)
+            ->add('body', CKEditorType::class, [
+                'config_name' => 'doc_config',
+                'label' => 'Description',
+            ])
         ;
     }
 

@@ -92,11 +92,17 @@ class CourseController extends Controller
      */
     public function show(Course $course): Response
     {
+        $termname = $this->getDoctrine()
+            ->getRepository(Term::class)->findName($course->getTerm());
+        $terms = $this->getDoctrine()
+            ->getRepository(Term::class)->findCurrent();
         $descriptions = $this->getDoctrine()
             ->getRepository(Description::class)->findByTermcall($course->getTermcall());
         return $this->render('course/show.html.twig', [
             'descriptions' => $descriptions,
             'course' => $course,
+            'terms' => $terms,
+            'termname' => $termname
         ]);
     }
 
@@ -111,7 +117,7 @@ class CourseController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('course_index');
+            return $this->redirectToRoute('course_show', ['id' => $course->getId()]);
         }
 
         return $this->render('course/edit.html.twig', [

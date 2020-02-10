@@ -5,11 +5,11 @@
 {% block body %}
     <div class="row-fluid">
         <h1>{{ course.coursename }}</h1>
+        {% if is_granted('ROLE_ADMIN') %}
         <div class="row-fluid">
             <a class="btn btn-primary" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
-
         </div>
-
+        {% endif %}
         <table class="table">
             <thead>
             <tr>
@@ -23,12 +23,12 @@
                 <th>Room</th>
                 <th>Days</th>
                 <th>Area</th>
-                <th>May</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>{{ course.term }} </td>
+                <td>{{ termname.termname }} </td>
                 <td>{{ course.coursename }}</td>
                 <td>{{ course.title }}</td>
                 <td>{{ course.instructorname }}</td>
@@ -52,7 +52,9 @@
             <hr/>
         {% else %}
             No Description for this Course.
+            {% if is_granted('ROLE_EDITOR') %}
             <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
+            {% endif %}
         {% endfor %}
     </div>
 

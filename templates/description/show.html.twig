@@ -3,15 +3,12 @@
 {% block title %}Description{% endblock %}
 
 {% block body %}
-    <h1>Description</h1>
+    <h1>Description for {{ description.course }}</h1>
 
-    <h2>{{ description.course }}</h2>
-    {{ description.body }}
-
-    <a href="{{ path('description_index') }}">back to list</a>
+    {{ description.body|raw }}
 
     {% if course %}
-    <a href="{{ path('description_edit', {'id': description.id, courseid: course.id}) }}">edit</a>
+    <a class="btn btn-primary" href="{{ path('description_edit', {'id': description.id, courseid: course.id}) }}">edit</a>
         {{ include('description/_delete_form.html.twig') }}
     {%  endif %}
 

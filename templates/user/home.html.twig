@@ -3,10 +3,9 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>{{ user.firstname }} {{ user.lastname }}</h1> <a class="btn btn-primary" href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
 
     <div class="row-fluid">
-        <h1>Courses</h1>
+        <h1>{{ user.firstname }} {{ user.lastname }}'s Courses</h1>
 
         <table class="table">
             <thead>
@@ -48,7 +47,7 @@
         </table>
     </div>
 
-    <h2>Descriptions</h2>
+    <h2>{{ user.firstname }} {{ user.lastname }}'s Descriptions</h2>
 
     <table class="table">
         <thead>
