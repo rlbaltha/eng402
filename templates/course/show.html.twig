@@ -48,13 +48,16 @@
 
         {% for description in descriptions %}
             {{ description.body|raw }}
+            {% if is_granted('ROLE_EDITOR') %}
             <a class="btn btn-primary" href="{{ path('description_edit', {'id': description.id, 'courseid': course.id}) }}">Update Description</a>
+            <a class="btn btn-primary" href="{{ path('user_home') }}">My Courses</a>
+            {% endif %}
             <hr/>
         {% else %}
             No Description for this Course.
             {% if is_granted('ROLE_EDITOR') %}
             <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
-            <a class="btn btn-primary" href="{{ path('user_home') }}">MY COURSES</a>
+            <a class="btn btn-primary" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
         {% endfor %}
     </div>
