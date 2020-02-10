@@ -6,6 +6,9 @@
 
     <div class="row-fluid">
         <h1>{{ user.firstname }} {{ user.lastname }}'s Courses</h1>
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <a href="{{ path('user_index', {'_switch_user': '_exit'}) }}">Exit Login As</a>
+        {% endif %}
 
         <table class="table">
             <thead>
