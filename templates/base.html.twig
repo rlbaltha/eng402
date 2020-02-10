@@ -59,8 +59,10 @@
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <a class="dropdown-item"
                            href="{{ path('user_home') }}">MY COURSES</a>
+                    {% if is_granted("ROLE_ADMIN") %}
                         <a class="dropdown-item"
                            href="{{ path('term_index') }}">TERMS</a>
+                        {% endif %}
                         <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
                             {{ 'layout.logout'|trans({}, 'FOSUserBundle')| upper }}
                         </a>

@@ -20,6 +20,7 @@ class TermController extends Controller
      */
     public function index(TermRepository $termRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('term/index.html.twig', [
             'terms' => $termRepository->findAllDescending(),
         ]);
@@ -30,6 +31,7 @@ class TermController extends Controller
      */
     public function new(Request $request): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $term = new Term();
         $form = $this->createForm(TermType::class, $term);
         $form->handleRequest($request);
@@ -53,6 +55,7 @@ class TermController extends Controller
      */
     public function show(Term $term): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('term/show.html.twig', [
             'term' => $term,
         ]);
@@ -63,6 +66,7 @@ class TermController extends Controller
      */
     public function edit(Request $request, Term $term): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(TermType::class, $term);
         $form->handleRequest($request);
 
@@ -83,6 +87,7 @@ class TermController extends Controller
      */
     public function delete(Request $request, Term $term): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete'.$term->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($term);

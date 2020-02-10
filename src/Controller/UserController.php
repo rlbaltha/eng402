@@ -102,7 +102,7 @@ class UserController extends Controller
      */
     public function edit(Request $request, User $user): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
