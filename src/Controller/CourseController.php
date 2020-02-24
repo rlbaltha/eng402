@@ -113,6 +113,11 @@ class CourseController extends Controller
      */
     public function show(Course $course): Response
     {
+        $name = 'none';
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_EDITOR')) {
+            $user = $this->getUser();
+            $name = $user->getLastname().', '.$user->getFirstname();
+        }
         $termname = $this->getDoctrine()
             ->getRepository(Term::class)->findName($course->getTerm());
         $terms = $this->getDoctrine()
@@ -123,7 +128,8 @@ class CourseController extends Controller
             'descriptions' => $descriptions,
             'course' => $course,
             'terms' => $terms,
-            'termname' => $termname
+            'termname' => $termname,
+            'name' => $name
         ]);
     }
 

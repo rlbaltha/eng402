@@ -43,14 +43,14 @@
 
         {% for description in descriptions %}
             {{ description.body|raw }}
-            {% if is_granted('ROLE_EDITOR') %}
+            {% if is_granted('ROLE_EDITOR') and name==course.instructorname %}
             <a class="cmp-button" href="{{ path('description_edit', {'id': description.id, 'courseid': course.id}) }}">Update Description</a>
             <a class="cmp-button" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
             <hr/>
         {% else %}
             No Description for this Course.
-            {% if is_granted('ROLE_EDITOR') %}
+            {% if is_granted('ROLE_EDITOR') and name==course.instructorname %}
             <a class="cmp-button" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
             <a class="cmp-button" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
