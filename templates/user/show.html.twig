@@ -39,7 +39,7 @@
                 <th>Roles</th>
                 <td>
                     {{ user.roles ? user.roles|join(', ') : '' }}
-                    <a class="btn btn-primary" href="{{ path('user_promote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Promote Editor</a>  <a class="btn btn-primary" href="{{ path('user_demote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Demote Editor</a>
+                    <a class="cmp-button" href="{{ path('user_promote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Promote Editor</a>  <a class="cmp-button" href="{{ path('user_demote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Demote Editor</a>
                 </td>
             </tr>
         </tbody>

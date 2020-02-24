@@ -21,7 +21,7 @@
         {% for user in users %}
             <tr>
                 <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a></td>
-                <td>{{ user.username }}</td>
+                <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.username }}</a></td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
                 <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>

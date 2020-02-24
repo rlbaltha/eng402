@@ -3,12 +3,9 @@
 {% block title %}Course{% endblock %}
 
 {% block body %}
-    <div class="row-fluid">
-        <h1>{{ course.coursename }}</h1>
+        <h2 class="cmp-heading-2" style="margin-top: 1em !important;">{{ course.coursename }}</h2>
         {% if is_granted('ROLE_ADMIN') %}
-        <div class="row-fluid">
             <a class="cmp-button" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
-        </div>
         {% endif %}
         <table class="table">
             <thead>
@@ -42,9 +39,7 @@
             </tr>
             </tbody>
         </table>
-    </div>
 
-    <div class="row-fluid">
 
         {% for description in descriptions %}
             {{ description.body|raw }}
@@ -60,6 +55,5 @@
             <a class="cmp-button" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
         {% endfor %}
-    </div>
 
 {% endblock %}
