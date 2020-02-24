@@ -28,7 +28,7 @@ class CourseController extends Controller
     }
 
     /**
-     * @Route("/area/{term}/{area}", name="course_area", methods={"GET"}, defaults={"term":"current","area":"U"})
+     * @Route("/area/{term}/{area}", name="course_area", methods={"GET"}, defaults={"term"="current","area"="U"})
      */
     public function area(CourseRepository $courseRepository, $area, $term): Response
     {
@@ -49,7 +49,7 @@ class CourseController extends Controller
     }
 
     /**
-     * @Route("/upper/{term}/{area}", name="course_upper", methods={"GET"}, defaults={"term":"current","area":"U"})
+     * @Route("/upper/{term}/{area}", name="course_upper", methods={"GET"}, defaults={"term"="current","area"="U"})
      */
     public function upper(CourseRepository $courseRepository, $area, $term): Response
     {

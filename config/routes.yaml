@@ -5,3 +5,10 @@ controllers:
     resource: '../src/Controller/'
     type:     annotation
 
+
+index:
+    path: /
+    controller: App\Controller\CourseController::area
+    defaults:
+        area: "U"
+        term: "current"
