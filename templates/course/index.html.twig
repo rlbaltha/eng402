@@ -3,8 +3,6 @@
 {% block title %}Course index{% endblock %}
 
 {% block body %}
-<div class="row">
-        <div class="util-scrollable-content">
         <table>
             <thead>
             <tr>
@@ -35,7 +33,7 @@
                         {% else %}
                         {% endif %}
                     </td>
-                    <td>{{ course.building }}</td>
+                    <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                     <td>{{ course.room }}</td>
                     <td>{{ course.days }}</td>
                     <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -47,8 +45,6 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
-</div>
 
 {% endblock %}
 

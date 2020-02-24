@@ -3,9 +3,7 @@
 {% block title %}Course index{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="util-scrollable-content">
-        <h2>
+        <h2 style="margin-top: 1em !important;">
             Group 1
         </h2>
         <p>
@@ -54,13 +52,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -107,13 +105,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -159,13 +157,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -211,13 +209,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -260,13 +258,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -309,13 +307,13 @@
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
-                        <td>{{ course.building }}</td>
+                        <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
                         <td>{{ course.room }}</td>
                         <td>{{ course.days }}</td>
                         <td>{{ course.may }} {{ course.summerterm }}</td>
@@ -328,9 +326,6 @@
             {% endfor %}
             </tbody>
         </table>
-            <div class="util-scrollable-content">
-    </div>
-
 
 {% endblock %}
 

@@ -45,8 +45,12 @@ body {
 }
 
 h1 {
-    margin: 1em; font-size: 2.5em !important;
+    margin: 2em; font-size: 2.5em !important;
 }
 h2 {
-    margin: 1em; font-size: 2em !important;
+    margin: 2em; font-size: 2em !important;
+}
+
+table {
+    margin: 2rem;
 }

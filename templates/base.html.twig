@@ -2,105 +2,165 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="application-name" content="University of Georgia">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://design.online.uga.edu/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://design.online.uga.edu/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://design.online.uga.edu/favicon/favicon-16x16.png">
     <title>{% block title %}UGA English Courses{% endblock %}</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/css/theme.bootstrap.min.css" integrity="sha256-vgjicWNWkVklkfuqKnQth9ww987V7wCOzh6A0qkJ2Lw=" crossorigin="anonymous" />
     {# local #}
-    <link type="text/css" rel="stylesheet" href="https://design.online.uga.edu/css/base.css">
+    <link rel="stylesheet" href="https://design.online.uga.edu/css/base.css">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/local.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
 
-<div class="header-row">
-    <a class="" href="http://www.english.uga.edu"
-       title="English Department Homepage">
-        <img class="header-img img-responsive" alt="UGA English Department logo"
-             src="https://www.english.uga.edu/sites/default/files/Screen-ENG-A%26S-H-FC_0.png"/></a>
-
-</div>
-<nav class="navbar navbar-expand-md">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="http://www.english.uga.edu/first-year-composition">PROGRAMS</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    COURSES
+<header class="cmp-header">
+    <div class="cmp-header__title-bar">
+        <div class="cmp-title-bar">
+            <div class="cmp-site-title">
+                <a href="/" class="cmp-site-title__link">
+                    <img src="https://www.english.uga.edu/sites/default/files/Screen-ENG-A%26S-H-FC_0.png"
+                         class="cmp-site-title__logo" alt="Online Learning"/>
                 </a>
-                {%  if termname is defined %}
-                {%  set term = termname.term %}
-                {% else %}
-                {%  set term = 'current' %}
-                {% endif %}
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'A', 'term': term}) }}">COMPOSITION</a>
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'B', 'term': term}) }}">SOPHMORE
-                        SURVEYS</a>
-                    <a class="dropdown-item" href="{{ path('course_upper', {'area': 'U', 'term': term}) }}">UPPER</a>
-                    <a class="dropdown-item"
-                       href="{{ path('course_area', {'area': 'G', 'term': term}) }}">GRADUATE</a>
-                    <div class="dropdown-divider"></div>
-                    {% if terms is defined %}
-                    {% for term in terms %}
-                    <a class="dropdown-item" href="{{ path('course_area', {'area': 'U', 'term': term.term }) }}">{{term.termname}}</a>
-                    {% endfor %}
-                    {% endif %}
-                    <div class="dropdown-divider"></div>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a class="dropdown-item"
-                           href="{{ path('user_home') }}">MY COURSES</a>
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <a class="dropdown-item"
-                           href="{{ path('term_index') }}">TERMS</a>
-                        {% endif %}
-                        <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle')| upper }}
-                        </a>
-                    {% else %}
-                        <a class="dropdown-item"
-                           href="{{ path('user_home') }}">LOG IN</a>
-                    {% endif %}
+            </div>
+
+            <div class="cmp-title-bar__features">
+                <button class="cmp-title-bar__menu-toggle js-menu-open">
+                    <svg viewBox="0 0 16 14" class="cmp-title-bar__menu-icon">
+                        <path d="M1,1 15,1 M1,7 15,7 M1,13 15,13"/>
+                    </svg>
+                    Menu
+                </button>
+            </div>
+
+        </div>
+
+        <div class="cmp-nav js-menu">
+            <nav>
+                <div class="cmp-nav__actions">
+                    <button class="cmp-nav__close js-menu-close">
+                        <svg class="cmp-nav__close-icon" viewBox="0 0 16 16">
+                            <path d="M1,1 15,15 M 1,15, 15,1"/>
+                        </svg>
+                        Close
+                    </button>
+
+                    <a href="/" class="cmp-nav__title icon-shield">Online Learning</a>
                 </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://www.english.uga.edu/directory/graduate-faculty">PEOPLE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://www.english.uga.edu/news/all">NEWS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://www.english.uga.edu/events/all">EVENTS</a>
-            </li>
 
-        </ul>
+                {% if termname is defined %}
+                    {% set term = termname.term %}
+                {% else %}
+                    {% set term = 'current' %}
+                {% endif %}
+
+                <ul class="cmp-nav__list">
+                    <li class="cmp-nav__item">
+                        <a class="cmp-nav__link" href="http://www.english.uga.edu/first-year-composition">PROGRAMS</a>
+                    </li>
+                    <li class="cmp-nav__item">
+                        <div class="cmp-nav__subnav-actions">
+                            <a class="cmp-nav__link" href="{{ path('course_upper', {'area': 'U', 'term': term}) }}">
+                                COURSES
+                            </a>
+                            <button class="cmp-nav__toggle js-subnav" id="degrees-and-certs"
+                                    data-icon-expanded="icon-up-arrow" data-icon-hidden="icon-down-arrow">
+                <span class="util-visually-hidden">
+                  Open Navigation
+                </span>
+                            </button>
+
+                        </div>
+                        <ul class="cmp-subnav" aria-labelledby="degrees-and-certs">
+                            <li>
+                                <a class="cmp-subnav__link"
+                                   href="{{ path('course_area', {'area': 'A', 'term': term}) }}">COMPOSITION</a>
+                            </li>
+                            <li>
+                                <a class="cmp-subnav__link"
+                                   href="{{ path('course_area', {'area': 'B', 'term': term}) }}">SOPHMORE
+                                    SURVEYS</a>
+                            </li>
+                            <li>
+                                <a class="cmp-subnav__link"
+                                   href="{{ path('course_upper', {'area': 'U', 'term': term}) }}">UPPER</a>
+                            </li>
+                            <li>
+                                <a class="cmp-subnav__link"
+                                   href="{{ path('course_area', {'area': 'G', 'term': term}) }}">GRADUATE</a>
+                            </li>
+
+                            {% if terms is defined %}
+                                {% for term in terms %}
+                                    <li>
+                                        <a class="cmp-subnav__link"
+                                           href="{{ path('course_area', {'area': 'U', 'term': term.term }) }}">{{ term.termname }}</a>
+
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li>
+                                    <a class="cmp-subnav__link"
+                                       href="{{ path('user_home') }}">MY COURSES</a>
+                                </li>
+
+                                {% if is_granted("ROLE_ADMIN") %}
+                                    <li>
+                                        <a class="cmp-subnav__link"
+                                           href="{{ path('term_index') }}">TERMS</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a class="cmp-subnav__link" href="{{ path('fos_user_security_logout') }}">
+                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle')| upper }}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="cmp-subnav__link"
+                                       href="{{ path('user_home') }}">LOG IN</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                    <li class="cmp-nav__item">
+
+                        <a class="cmp-nav__link" href="http://www.english.uga.edu/directory/graduate-faculty">PEOPLE</a>
+
+                    </li>
+                    <li class="cmp-nav__item">
+
+                        <a class="cmp-nav__link" href="http://www.english.uga.edu/news/all">NEWS</a>
+
+                    </li>
+                    <li class="cmp-nav__item">
+
+                        <a class="cmp-nav__link" href="http://www.english.uga.edu/events/all">EVENTS</a>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
-</nav>
+</header>
 
-<div class="container">
-
-    {% block body %}{% endblock %}
-
+<div class="obj-grid obj-content-width">
+    <div class="obj-grid__full">
+        <div class="util-scrollable-content">
+        {% block body %}{% endblock %}
+        </div>
+    </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"
-        integrity="sha256-uC1JMW5e1U5D28+mXFxzTz4SSMCywqhxQIodqLECnfU=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.widgets.min.js"
-        integrity="sha256-Xx4HRK+CKijuO3GX6Wx7XOV2IVmv904m0HKsjgzvZiY=" crossorigin="anonymous"></script>
-
+{#<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"#}
+{#        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.min.js"#}
+{#        integrity="sha256-uC1JMW5e1U5D28+mXFxzTz4SSMCywqhxQIodqLECnfU=" crossorigin="anonymous"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.widgets.min.js"#}
+{#        integrity="sha256-Xx4HRK+CKijuO3GX6Wx7XOV2IVmv904m0HKsjgzvZiY=" crossorigin="anonymous"></script>#}
+<script src="https://design.online.uga.edu/js/scripts.js"></script>
 <script language="javascript">
     $(document).ready(function () {
     });

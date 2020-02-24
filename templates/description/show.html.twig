@@ -8,7 +8,7 @@
     {{ description.body|raw }}
 
     {% if course %}
-    <a class="btn btn-primary" href="{{ path('description_edit', {'id': description.id, courseid: course.id}) }}">edit</a>
+    <a class="cmp-button" href="{{ path('description_edit', {'id': description.id, courseid: course.id}) }}">edit</a>
         {{ include('description/_delete_form.html.twig') }}
     {%  endif %}
 

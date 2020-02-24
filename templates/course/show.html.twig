@@ -7,7 +7,7 @@
         <h1>{{ course.coursename }}</h1>
         {% if is_granted('ROLE_ADMIN') %}
         <div class="row-fluid">
-            <a class="btn btn-primary" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
+            <a class="cmp-button" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
         </div>
         {% endif %}
         <table class="table">
@@ -49,15 +49,15 @@
         {% for description in descriptions %}
             {{ description.body|raw }}
             {% if is_granted('ROLE_EDITOR') %}
-            <a class="btn btn-primary" href="{{ path('description_edit', {'id': description.id, 'courseid': course.id}) }}">Update Description</a>
-            <a class="btn btn-primary" href="{{ path('user_home') }}">My Courses</a>
+            <a class="cmp-button" href="{{ path('description_edit', {'id': description.id, 'courseid': course.id}) }}">Update Description</a>
+            <a class="cmp-button" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
             <hr/>
         {% else %}
             No Description for this Course.
             {% if is_granted('ROLE_EDITOR') %}
-            <a class="btn btn-primary" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
-            <a class="btn btn-primary" href="{{ path('user_home') }}">My Courses</a>
+            <a class="cmp-button" href="{{ path('description_new', {'course': course.id}) }}">Add Description</a>
+            <a class="cmp-button" href="{{ path('user_home') }}">My Courses</a>
             {% endif %}
         {% endfor %}
     </div>

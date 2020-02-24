@@ -14,38 +14,38 @@ class CourseType extends AbstractType
     {
         $builder
             ->add('term', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('coursename', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('title', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('instructorname', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('callnumber', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('building', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('room', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('days', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('area', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
             ])
             ->add('may', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
                 'required' => false,
             ])
             ->add('summerterm', TextType::class, [
-                'attr' => ['class' => 'form-control'],
+                'attr' => ['class' => 'cmp-form-field__input'],
                 'required' => false,
             ])
         ;

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}English:  {{ user.firstname }} {{ user.lastname }}'s Courses{% endblock %}
 
 {% block body %}
 
-    <div class="row-fluid">
-        <h1>{{ user.firstname }} {{ user.lastname }}'s Courses</h1>
+        <h2 class="cmp-heading-2" style="margin-top: 1em !important;">{{ user.firstname }} {{ user.lastname }}'s Courses</h2>
+        <a class="cmp-button" href="{{ path('user_edit', {'id': user.id}) }}">Edit Name</a>
         {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-            <a class="btn btn-primary" href="{{ path('user_index', {'_switch_user': '_exit'}) }}">Exit Login As</a>
+            <a class="cmp-button" href="{{ path('user_index', {'_switch_user': '_exit'}) }}">Exit Login As</a>
         {% endif %}
 
         <table class="table">
@@ -42,7 +42,7 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+
 
     <h2>{{ user.firstname }} {{ user.lastname }}'s Descriptions</h2>
 
