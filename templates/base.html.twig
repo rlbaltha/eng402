@@ -89,6 +89,12 @@
                                 <a class="cmp-subnav__link"
                                    href="{{ path('course_area', {'area': 'G', 'term': term}) }}">GRADUATE</a>
                             </li>
+                            <hr/>
+                            <li>
+                                <a class="cmp-subnav__link"
+                                   href="#">Change Term</a>
+
+                            </li>
 
                             {% if terms is defined %}
                                 {% for term in terms %}
@@ -99,8 +105,9 @@
                                     </li>
                                 {% endfor %}
                             {% endif %}
-
+                            <hr/>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
                                 <li>
                                     <a class="cmp-subnav__link"
                                        href="{{ path('user_home') }}">MY COURSES</a>
