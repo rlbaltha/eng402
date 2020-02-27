@@ -1,10 +1,16 @@
-#login:
-#    path: /login
-#    defaults: { _controller: 'App\Controller\CourseController::index' }
-#
-#logout:
-#    path: /logout
-#    defaults: { _controller: 'App\Controller\CourseController::index' }
-#
-#login_check:
-#    path: /login_check
+login:
+    path: /login
+    controller: App\Controller\CourseController::upper
+    defaults:
+      area: "U"
+      term: "current"
+
+logout:
+    path: /logout
+    controller: App\Controller\CourseController::upper
+    defaults:
+      area: "U"
+      term: "current"
+
+login_check:
+    path: /login_check
