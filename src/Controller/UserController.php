@@ -125,6 +125,7 @@ class UserController extends Controller
      */
     public function promoteuserAction($username,$role)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername($username);
         $user->addRole($role);
@@ -139,11 +140,12 @@ class UserController extends Controller
      */
     public function demoteuserAction($username,$role)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $userManager = $this->container->get('fos_user.user_manager');
         $user = $userManager->findUserByUsername($username);
         $user->removeRole($role);
         $userManager->updateUser($user);
-        return $this->render('user/show.html.twig', array('user' => $user));
+        return $this->redirectToRoute('user_index');
     }
 
     /**
@@ -151,6 +153,7 @@ class UserController extends Controller
      */
     public function delete(Request $request, User $user): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
