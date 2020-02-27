@@ -130,7 +130,7 @@ class UserController extends Controller
         $user = $userManager->findUserByUsername($username);
         $user->addRole($role);
         $userManager->updateUser($user);
-        return $this->render('user/show.html.twig', array('user' => $user));
+        return $this->redirectToRoute('user_index');
     }
 
     /**
