@@ -25,15 +25,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
                 <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
-{#                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>#}
-                <td>
-                    {% for role in user.roles %}
-                        {% if role=="ROLE_USER" or role=="ROLE_EDITOR" or role=="ROLE_ADMIN" %}{{ role }}
-                        {% else %}
-                            <a class="" href="{{ path('user_demote', { 'username': user.username, 'role': role }) }}">{{role}}</a>
-                        {% endif %}
-                    {% endfor %}
-                </td>
+                <td>{{ user.roles ? user.roles|join(', ') : '' }} <a class="" href="{{ path('user_promote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Promote</a></td>
                 <td><a href="{{ path('user_home') }}?_switch_user={{ user.username}}">Login As</a></td>
             </tr>
         {% else %}
