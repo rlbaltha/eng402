@@ -10,32 +10,33 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Term</th>
-                <th>Coursename</th>
+                {% if termname is defined %}<th>Term</th>{% endif %}
+                <th>Course</th>
                 <th>Title</th>
-                <th>Instructorname</th>
+                <th>Instructor</th>
                 <th>Callnumber</th>
-                <th>Time</th>
-                <th>Building</th>
-                <th>Room</th>
                 <th>Days</th>
-                <th>Area</th>
-                <th></th>
+                <th>Time</th>
+                <th>Room</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>{{ termname.termname }} </td>
+                {% if termname is defined %}<td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
                 <td>{{ course.coursename }}</td>
                 <td>{{ course.title }}</td>
                 <td>{{ course.instructorname }}</td>
                 <td>{{ course.callnumber }}</td>
-                <td>{{ course.time }}</td>
-                <td>{{ course.building }}</td>
-                <td>{{ course.room }}</td>
                 <td>{{ course.days }}</td>
-                <td>{{ course.area }}</td>
-                <td>{{ course.may }} {{ course.summerterm }}</td>
+                <td>
+                    {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
+                        {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
+                        {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                    {% else %}
+                    {% endif %}
+                </td>
+                <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}
+                    {% if course.room=='NCRR' %}{% else %}{{ course.room }}{% endif %}</td>
             </tr>
             </tbody>
         </table>
