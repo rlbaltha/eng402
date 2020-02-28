@@ -2,8 +2,26 @@
 
 {% block title %}Course index{% endblock %}
 
+
+
 {% block body %}
-        <table>
+
+    <nav style=" margin-top: 2em">
+        <ol class="cmp-breadcrumbs">
+            <li class="cmp-breadcrumbs__item">
+                <a class="cmp-breadcrumbs__link" data-title="Home" href="http://www.english.uga.edu">English Department</a>
+            </li>
+            <li class="cmp-breadcrumbs__item">
+                <a class="cmp-breadcrumbs__link" data-title="Resources" href="/">Courses</a>
+            </li>
+            <li class="cmp-breadcrumbs__item cmp-breadcrumbs__item--current">
+                <a class="cmp-breadcrumbs__link" aria-current="page" href="#">{% if termname is defined %}<td>{{ termname.termname }}</td>{% endif %}</a>
+            </li>
+        </ol>
+    </nav>
+
+
+        <table style=" margin-top: 2em">
             <thead>
             <tr>
                 {% if termname is defined %}<th>Term</th>{% endif %}

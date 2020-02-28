@@ -20,7 +20,7 @@
             <div class="cmp-site-title">
                 <a href="/" class="cmp-site-title__link">
                     <img src="https://www.english.uga.edu/sites/default/files/Screen-ENG-A%26S-H-FC_0.png"
-                         class="cmp-site-title__logo" alt="Online Learning"/>
+                         class="cmp-site-title__logo" alt="English Department"/>
                 </a>
             </div>
 
@@ -45,7 +45,7 @@
                         Close
                     </button>
 
-                    <a href="/" class="cmp-nav__title icon-shield">Online Learning</a>
+                    <a href="/" class="cmp-nav__title icon-shield">English Department</a>
                 </div>
 
                 {% if termname is defined %}
@@ -63,7 +63,7 @@
                             <a class="cmp-nav__link" href="{{ path('course_upper', {'area': 'U', 'term': term}) }}">
                                 COURSES
                             </a>
-                            <button class="cmp-nav__toggle js-subnav" id="degrees-and-certs"
+                            <button class="cmp-nav__toggle js-subnav" id="courses"
                                     data-icon-expanded="icon-up-arrow" data-icon-hidden="icon-down-arrow">
                 <span class="util-visually-hidden">
                   Open Navigation
@@ -71,7 +71,7 @@
                             </button>
 
                         </div>
-                        <ul class="cmp-subnav" aria-labelledby="degrees-and-certs">
+                        <ul class="cmp-subnav" aria-labelledby="courses">
                             <li>
                                 <a class="cmp-subnav__link"
                                    href="{{ path('course_area', {'area': 'A', 'term': term}) }}">COMPOSITION</a>
