@@ -20,7 +20,7 @@
         </ol>
     </nav>
 
-
+<div class="util-scrollable-content">
         <table style=" margin-top: 2em">
             <thead>
             <tr>
@@ -29,21 +29,20 @@
                 <th>Title</th>
                 <th>Instructor</th>
                 <th>Callnumber</th>
-                <th>Time</th>
-                <th>Building</th>
-                <th>Room</th>
                 <th>Days</th>
-                <th></th>
+                <th>Time</th>
+                <th>Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 <tr>
-                    {% if termname is defined %}<td>{{ termname.termname }}</td>{% endif %}
+                    {% if termname is defined %}<td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
                     <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
                     <td>{{ course.title }}</td>
                     <td>{{ course.instructorname }}</td>
                     <td>{{ course.callnumber }}</td>
+                    <td>{{ course.days }}</td>
                     <td>
                         {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
                             {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
@@ -51,10 +50,8 @@
                         {% else %}
                         {% endif %}
                     </td>
-                    <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}</td>
-                    <td>{{ course.room }}</td>
-                    <td>{{ course.days }}</td>
-                    <td>{{ course.may }} {{ course.summerterm }}</td>
+                    <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}
+                        {% if course.room=='NCRR' %}{% else %}{{ course.room }}{% endif %}</td>
                 </tr>
             {% else %}
                 <tr>
@@ -63,7 +60,7 @@
             {% endfor %}
             </tbody>
         </table>
-
+</div>
 {% endblock %}
 
 {% block javascripts %}
