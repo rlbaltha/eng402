@@ -6,48 +6,49 @@
     <nav style=" margin-top: 2em">
         <ol class="cmp-breadcrumbs">
             <li class="cmp-breadcrumbs__item">
-                <a class="cmp-breadcrumbs__link" data-title="Home" href="http://www.english.uga.edu">English Department</a>
+                <a class="cmp-breadcrumbs__link" data-title="Home" href="http://www.english.uga.edu">English
+                    Department</a>
             </li>
             <li class="cmp-breadcrumbs__item">
                 <a class="cmp-breadcrumbs__link" data-title="Resources" href="/">Courses</a>
             </li>
             <li class="cmp-breadcrumbs__item cmp-breadcrumbs__item--current">
-                <a class="cmp-breadcrumbs__link" aria-current="page" href="#">{% if termname is defined %}<td>{{ termname.termname }}</td>{% endif %}</a>
+                <a class="cmp-breadcrumbs__link" aria-current="page" href="#">{% if termname is defined %}
+                        <td>{{ termname.termname }}</td>{% endif %}</a>
             </li>
         </ol>
     </nav>
-        <h2 style="margin-top: 1em !important;">
-            Group 1
-        </h2>
-        <p>
-            English and American Literature before 1800 (Two required, each from different areas)
-        </p>
-        <p>
-            (1) Early Literature of the British Isles (2) Medieval Literature (3) Renaissance Literature (4) Restoration
-            and
-            Eighteenth-century British and American Literature
-        </p>
-<div class="util-scrollable-content">
-        <table class="table">
+
+    <h2 style=" margin-top: 2em">
+        Group 1
+    </h2>
+    <p>
+        English and American Literature before 1800 (Two required, each from different areas)
+    </p>
+    <p>
+        (1) Early Literature of the British Isles (2) Medieval Literature (3) Renaissance Literature (4) Restoration
+        and
+        Eighteenth-century British and American Literature
+    </p>
+    <div class="util-scrollable-content">
+
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 1 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td>
+                        <th scope="row">
                             {% if '4060' in course.coursename or '4210' in course.coursename or '4220' in course.coursename  or '4222' in course.coursename  or '4295' in course.coursename  or '4296' in course.coursename %}(1)
                             {% elseif '4225' in course.coursename or '4230' in course.coursename or '4230' in course.coursename or '4240' in course.coursename or '4270' in course.coursename or '4290' in course.coursename or '4297' in course.coursename %}(2)
                             {% elseif '4300' in course.coursename or '4310' in course.coursename or '4320' in course.coursename or '4330' in course.coursename or
@@ -58,15 +59,15 @@
                                 in course.coursename or '4491' in course.coursename %}(4)
                             {% elseif '4332' in course.coursename or '4333' in course.coursename or '4334' in course.coursename or '4380' in course.coursename %}(3)
                             {% endif %}
-                            <a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                            <a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -76,47 +77,47 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
-        <h2>
-            Group 2
-        </h2>
-        <p>
-            British and Postcolonial Literature after 1800 (One required)
-        </p>
-<div class="util-scrollable-content">
-        <table class="table">
+    </div>
+
+    <h2>
+        Group 2
+    </h2>
+    <p>
+        British and Postcolonial Literature after 1800 (One required)
+    </p>
+    <div class="util-scrollable-content">
+
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 2 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                        <th scope="row"><a
+                                    href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -126,47 +127,47 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
-        <h2>
-            Group 3
-        </h2>
-        <p>
-            American Literature after 1800 (One required)
-        </p>
-<div class="util-scrollable-content">
-        <table class="table">
+    </div>
+
+    <h2>
+        Group 3
+    </h2>
+    <p>
+        American Literature after 1800 (One required)
+    </p>
+    <div class="util-scrollable-content">
+
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 3 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                        <th scope="row"><a
+                                    href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -176,47 +177,46 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
-        <h2>
-            Group 4
-        </h2>
-        <p>
-            Language, Criticism, and Culture (One required)
-        </p>
-<div class="util-scrollable-content">
-        <table class="table">
+    </div>
+
+    <h2>
+        Group 4
+    </h2>
+    <p>
+        Language, Criticism, and Culture (One required)
+    </p>
+    <div class="util-scrollable-content">
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 4 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                        <th scope="row"><a
+                                    href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -226,44 +226,42 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
-        <h2>
-            Group 5
-        </h2>
-<div class="util-scrollable-content">
-        <table class="table">
+    </div>
+    <h2>
+        Group 5
+    </h2>
+    <div class="util-scrollable-content">
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 5 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                        <th scope="row"><a
+                                    href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -273,44 +271,42 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
-        <h2>
-            Group 6
-        </h2>
-<div class="util-scrollable-content">
-        <table class="table">
+    </div>
+    <h2>
+        Group 6
+    </h2>
+    <div class="util-scrollable-content">
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">Callnumber</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 {% if  course.area == 6 %}
                     <tr>
-                        {% if termname is defined %}
-                            <td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                        <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                        <th scope="row"><a
+                                    href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                         <td>{{ course.title }}</td>
                         <td>{{ course.instructorname }}</td>
                         <td>{{ course.callnumber }}</td>
                         <td>{{ course.days }}</td>
                         <td>
-                            {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
-                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
-                                {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
+                            {% if course.time == 'TBA' %}TBA{% elseif course.time > 0 %}
+                                {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12 }}
+                                {% else %}{{ course.time|slice(0,2)|number_format }}{% endif %}:{{ course.time|slice(2,2) }}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                             {% else %}
                             {% endif %}
                         </td>
@@ -320,12 +316,12 @@
                 {% endif %}
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-</div>
+    </div>
 
 {% endblock %}
 

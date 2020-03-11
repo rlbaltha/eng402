@@ -2,8 +2,6 @@
 
 {% block title %}Course index{% endblock %}
 
-
-
 {% block body %}
 
     <nav style=" margin-top: 2em">
@@ -21,24 +19,22 @@
     </nav>
 
 <div class="util-scrollable-content">
-        <table style=" margin-top: 2em">
+        <table>
             <thead>
             <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
+                <th scope="col">Course</th>
+                <th scope="col">Title</th>
+                <th scope="col">Instructor</th>
+                <th scope="col">CRN</th>
+                <th scope="col">Days</th>
+                <th scope="col">Time</th>
+                <th scope="col">Room</th>
             </tr>
             </thead>
             <tbody>
             {% for course in courses %}
                 <tr>
-                    {% if termname is defined %}<td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                    <td><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></td>
+                    <th scope="row"><a href="{{ path('course_show', {'id': course.id}) }}">{{ course.coursename }}</a></th>
                     <td>{{ course.title }}</td>
                     <td>{{ course.instructorname }}</td>
                     <td>{{ course.callnumber }}</td>
@@ -55,7 +51,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="14">No Courses Found</td>
+                    <td colspan="7">No Courses Found</td>
                 </tr>
             {% endfor %}
             </tbody>
