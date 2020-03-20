@@ -3,45 +3,21 @@
 {% block title %}Course{% endblock %}
 
 {% block body %}
-        <h2 class="cmp-heading-2" style="margin-top: 1em !important;">{{ course.coursename }}</h2>
+        <h2 class="cmp-heading-2" style="margin-top: 1em !important;">{{ course.coursename }}: {{ course.title }} ({{ course.callnumber }})</h2>
         {% if is_granted('ROLE_ADMIN') %}
             <a class="cmp-button" href="{{ path('course_edit', {'id': course.id}) }}">Edit Course</a>
         {% endif %}
-        <table class="table">
-            <thead>
-            <tr>
-                {% if termname is defined %}<th>Term</th>{% endif %}
-                <th>Course</th>
-                <th>Title</th>
-                <th>Instructor</th>
-                <th>Callnumber</th>
-                <th>Days</th>
-                <th>Time</th>
-                <th>Room</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% if termname is defined %}<td>{{ termname.termname }} {{ course.may }} {{ course.summerterm }}</td>{% endif %}
-                <td>{{ course.coursename }}</td>
-                <td>{{ course.title }}</td>
-                <td>{{ course.instructorname }}</td>
-                <td>{{ course.callnumber }}</td>
-                <td>{{ course.days }}</td>
-                <td>
+    <p>{{ course.instructorname }}</p>
+    <p>{{ course.days }}
                     {% if course.time == 'TBA'%}TBA{% elseif course.time > 0 %}
                         {% if course.time|slice(0,2) > 12 %}{{ course.time|slice(0,2) - 12}}
                         {% else %}{{ course.time|slice(0,2)|number_format}}{% endif %}:{{ course.time|slice(2,2)}}{% if course.time|slice(0,2) > 11 %} PM{% else %} AM{% endif %}
                     {% else %}
-                    {% endif %}
-                </td>
-                <td>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}
-                    {% if course.room=='NCRR' %}{% else %}{{ course.room }}{% endif %}</td>
-            </tr>
-            </tbody>
-        </table>
+                    {% endif %}</p>
+    <p>{% if course.building=='Zell B Miller Learning Center' %}MLC{% else %}{{ course.building }}{% endif %}
+        {% if course.room=='NCRR' %}{% else %}{{ course.room }}{% endif %}</p>
 
-
+    <hr/>
         {% for description in descriptions %}
             {{ description.body|raw }}
             {% if is_granted('ROLE_EDITOR') and name==course.instructorname %}
