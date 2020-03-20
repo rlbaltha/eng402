@@ -26,7 +26,7 @@ class CourseRepository extends ServiceEntityRepository
     public function findAllAsc()
     {
         return $this->createQueryBuilder('c')
-            ->orderBy('c.area', 'DESC')
+            ->orderBy('c.coursename', 'ASC')
             ->setMaxResults(500)
             ->getQuery()
             ->getResult()
@@ -44,7 +44,7 @@ class CourseRepository extends ServiceEntityRepository
                 ->andWhere('c.area = 1 or c.area = 2 or c.area = 3 or c.area = 4 or c.area = 5 or c.area = 6')
                 ->andWhere('c.term = :term')
                 ->setParameter('term', $term)
-                ->orderBy('c.area', 'ASC')
+                ->orderBy('c.coursename', 'ASC')
                 ->setMaxResults(500)
                 ->getQuery()
                 ->getResult()
