@@ -37,6 +37,9 @@ class CourseType extends AbstractType
             ->add('days', TextType::class, [
                 'attr' => ['class' => 'cmp-form-field__input'],
             ])
+            ->add('time', TextType::class, [
+                'attr' => ['class' => 'cmp-form-field__input'],
+            ])
             ->add('area', TextType::class, [
                 'attr' => ['class' => 'cmp-form-field__input'],
             ])
