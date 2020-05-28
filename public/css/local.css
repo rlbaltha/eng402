@@ -2,53 +2,33 @@ body {
 
   }
 
-.header-img {
-    max-height: 10em;
+.cmp-site-title__logo {
+    width: auto;
+    min-height: 145px;
     padding: 1em;
 }
 
-.header-row {
-    margin-top: 0;
-    background-color: #fff;
-    height: 10em;
+.cmp-header {
+    min-height: 180px;
+    display: block;
 }
 
-.navbar {
-    padding: 1.5em;
-    background-color: black;
-    margin-bottom: 1em;
+.cmp-nav__link {
+   font-size: 1.25rem;
+    font-family: 'Oswald', sans-serif !important;
+    padding: .75em;
 }
 
-.navbar-dark .navbar-nav .navbar-text {
-    color: #fff;
-    font-size: 1em;
-    margin-left: 2em;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    color: #fff;
-    font-size: 1em;
-    margin-left: 2em;
-}
-
-.nav-link {
-    color: #fff;
-}
-.nav-link:hover {
-    color: #fff;
-    text-decoration: underline;
-}
-
-.dropdown-item {
-    padding: 1em;
-    color: black;
-}
 
 h1 {
-    margin: 2em; font-size: 2.5em !important;
+    margin: 1em;
+    margin-top: .5em !important;
+    font-size: 2.5em !important;
 }
 h2 {
-    margin: 2em; font-size: 2em !important;
+    margin: 1em;
+    margin-top: .5em !important;
+    font-size: 2em !important;
 }
 
 table {
