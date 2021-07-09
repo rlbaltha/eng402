@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <title>{% block title %}UGA English Courses{% endblock %}</title>
     {# local #}
-    <link rel="stylesheet" href="https://design.online.uga.edu/css/base.css">
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/base.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('css/local.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
@@ -173,10 +173,6 @@
 {#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.1/js/jquery.tablesorter.widgets.min.js"#}
 {#        integrity="sha256-Xx4HRK+CKijuO3GX6Wx7XOV2IVmv904m0HKsjgzvZiY=" crossorigin="anonymous"></script>#}
 <script src="https://design.online.uga.edu/js/scripts.js"></script>
-<script language="javascript">
-    $(document).ready(function () {
-    });
-</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>
