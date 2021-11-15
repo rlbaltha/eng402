@@ -26,6 +26,9 @@
     "doctrine/dbal": {
         "version": "v2.9.2"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "1.6",
         "recipe": {
@@ -198,11 +201,11 @@
             "ref": "71d29aaf710fd59cd3abff2b1ade907ed73103c6"
         }
     },
-    "symfony/debug-pack": {
-        "version": "v1.0.7"
-    },
     "symfony/dependency-injection": {
         "version": "v3.4.31"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "v2.4.0"
     },
     "symfony/doctrine-bridge": {
         "version": "v3.4.32"
@@ -315,6 +318,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.12.0"
     },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.23.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.12.0"
     },
@@ -324,11 +330,11 @@
     "symfony/polyfill-php73": {
         "version": "v1.12.0"
     },
+    "symfony/polyfill-php80": {
+        "version": "v1.23.1"
+    },
     "symfony/process": {
         "version": "v3.4.32"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.4"
     },
     "symfony/property-access": {
         "version": "v3.4.31"
