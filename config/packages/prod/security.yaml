@@ -9,7 +9,7 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         cas:
-            id: App\Service\CertUserProvider
+            id: App\Service\EngUserProvider
 
     firewalls:
         main:

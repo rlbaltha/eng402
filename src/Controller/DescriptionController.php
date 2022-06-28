@@ -7,7 +7,7 @@ use App\Entity\Course;
 use App\Entity\User;
 use App\Form\DescriptionType;
 use App\Repository\DescriptionRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/description")
  */
-class DescriptionController extends Controller
+class DescriptionController extends AbstractController
 {
     /**
      * @Route("/", name="description_index", methods={"GET"})
