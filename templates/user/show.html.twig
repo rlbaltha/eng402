@@ -7,7 +7,7 @@
 
     <a class="cmp-button" href="{{ path('user_index') }}">List Users</a>
 
-    <a class="cmp-button" href="{{ path('user_edit', {'id': user.id}) }}">Edit</a>
+    <a class="cmp-button" href="{{ path('user_admin_edit', {'id': user.id}) }}">Edit</a>
 
     <table class="table">
         <tbody>
@@ -28,18 +28,9 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Enabled</th>
-                <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>LastLogin</th>
-                <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
                 <th>Roles</th>
                 <td>
                     {{ user.roles ? user.roles|join(', ') : '' }}
-                    <a class="cmp-button" href="{{ path('user_promote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Promote Editor</a>  <a class="cmp-button" href="{{ path('user_demote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Demote Editor</a>
                 </td>
             </tr>
         </tbody>

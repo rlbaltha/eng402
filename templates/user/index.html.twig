@@ -11,8 +11,6 @@
                 <th>Name</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>Enabled</th>
-                <th>LastLogin</th>
                 <th>Roles</th>
                 <th>Login As</th>
             </tr>
@@ -23,9 +21,7 @@
                 <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.firstname }} {{ user.lastname }}</a></td>
                 <td><a href="{{ path('user_show', {'id': user.id}) }}">{{ user.username }}</a></td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
-                <td>{{ user.lastLogin ? user.lastLogin|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.roles ? user.roles|join(', ') : '' }} <a class="" href="{{ path('user_promote', { 'username': user.username, 'role': 'ROLE_EDITOR' }) }}">Promote</a></td>
+                <td>{{ user.roles ? user.roles|join(', ') : '' }}</td>
                 <td><a href="{{ path('user_home') }}?_switch_user={{ user.username}}">Login As</a></td>
             </tr>
         {% else %}
@@ -36,5 +32,4 @@
         </tbody>
     </table>
 
-    <a class="cmp-button" href="{{ path('user_new') }}">Create User</a>
 {% endblock %}

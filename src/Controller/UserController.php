@@ -6,6 +6,7 @@ use App\Entity\Course;
 use App\Entity\Term;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\AdminUserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,36 +32,35 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
+//    /**
+//     * @Route("/new", name="user_new", methods={"GET","POST"})
+//     */
+//    public function new(Request $request): Response
+//    {
+////        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+//        $user = new User();
+//        $form = $this->createForm(UserType::class, $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($user);
+//            $entityManager->flush();
+//
+//            return $this->redirectToRoute('user_index');
+//        }
+//
+//        return $this->render('user/new.html.twig', [
+//            'user' => $user,
+//            'form' => $form->createView(),
+//        ]);
+//    }
 
     /**
      * @Route("/home", name="user_home", methods={"GET"})
      */
     public function home(): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
@@ -95,6 +95,26 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/{id}/admin_edit", name="user_admin_edit", methods={"GET","POST"})
+     */
+    public function admin_edit(Request $request, User $user): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $form = $this->createForm(AdminUserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 
 
     /**
@@ -118,35 +138,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * Promote Users
-     *
-     * @Route("/{username}/{role}/promote", name="user_promote")
-     */
-    public function promoteuserAction($username,$role)
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($username);
-        $user->addRole($role);
-        $userManager->updateUser($user);
-        return $this->redirectToRoute('user_index');
-    }
-
-    /**
-     * Demote Users
-     *
-     * @Route("/{username}/{role}/demote", name="user_demote")
-     */
-    public function demoteuserAction($username,$role)
-    {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->findUserByUsername($username);
-        $user->removeRole($role);
-        $userManager->updateUser($user);
-        return $this->redirectToRoute('user_index');
-    }
 
     /**
      * @Route("/{id}", name="user_delete", methods={"DELETE"})
