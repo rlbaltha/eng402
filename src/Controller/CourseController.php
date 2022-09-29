@@ -7,7 +7,7 @@ use App\Entity\Term;
 use App\Form\CourseType;
 use App\Repository\CourseRepository;
 use App\Entity\Description;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/course")
  */
-class CourseController extends Controller
+class CourseController extends AbstractController
 {
     /**
      * @Route("/", name="course_index", methods={"GET"})
