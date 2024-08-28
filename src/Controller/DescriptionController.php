@@ -40,7 +40,7 @@ class DescriptionController extends AbstractController
     }
 
     /**
-     * @Route("{course}/new", name="description_new", methods={"GET","POST"})
+     * @Route("/{course}/new", name="description_new", methods={"GET","POST"})
      */
     public function new(Request $request, $course): Response
     {
@@ -48,6 +48,7 @@ class DescriptionController extends AbstractController
         $course = $this->getDoctrine()
             ->getRepository(Course::class)->find($course);
         $description = new Description();
+        $description->setBody(' ');
         $description->setTermcall($course->getTermcall());
         $description->setCourse($course->getTitle());
         $description->setUser($user);

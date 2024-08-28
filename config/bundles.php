@@ -8,7 +8,6 @@ return [
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
-    FOS\CKEditorBundle\FOSCKEditorBundle::class => ['all' => true],
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => ['all' => true],
     Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
     PRayno\CasAuthBundle\PRaynoCasAuthBundle::class => ['all' => true],
